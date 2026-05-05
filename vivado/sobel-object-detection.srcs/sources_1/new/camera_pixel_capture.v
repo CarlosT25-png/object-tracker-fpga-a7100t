@@ -1,51 +1,69 @@
 `timescale 1ns / 1ps
 
 module camera_pixel_capture(
-    input pclk, // pixel clock camera
+    input pclk,
     input rst,
-    input vsync, // vertical sync
-    input href, // horizontal ref
-    input [7:0] data_in, // 8 bit data from PMOD JB
+    input vsync,
+    input href,
+    input [7:0] data_in,
+    output reg [11:0] data_out,
+    output reg wr_en,
+    output reg [16:0] out_addr
+);
 
-    output reg [11:0] data_out, // 12 bit rgb to store in memory
-    output reg wr_en, // write enable flah
-    output reg [18:0] out_addr // mem addr to write to
-    );
+    reg byte_flag;
+    reg [7:0] latched_data;
 
-    reg [15:0] rgb565 = 0;
-    reg [18:0] next_addr = 0;
-    reg [1:0] byte_state = 0; // shift reg to track the two bytes of pixel data
+    reg last_vsync;
+    reg last_href;
+
+    reg [9:0] cam_x;
+    reg [9:0] cam_y;
 
     always @(posedge pclk) begin
+        last_vsync <= vsync;
+        last_href  <= href;
+
         if (rst) begin
             out_addr <= 0;
-            next_addr <= 0;
-            byte_state <= 0;
+            byte_flag <= 0;
             wr_en <= 0;
-        end
-
-        else if (vsync == 0) begin // is vsync is low, the fram is over, reset mem ptr to 0
+            cam_x <= 0;
+            cam_y <= 0;
+        end else if (last_vsync == 1'b0 && vsync == 1'b1) begin
             out_addr <= 0;
-            next_addr <= 0;
-            byte_state <= 0;
+            byte_flag <= 0;
             wr_en <= 0;
-        end
+            cam_x <= 0;
+            cam_y <= 0;
+        end else begin
+            if (last_href == 1'b1 && href == 1'b0) begin
+                cam_y <= cam_y + 1;
+                cam_x <= 0;
+            end
 
-        else begin
-            rgb565 <= {rgb565[7:0], data_in};
+            if (href) begin
+                if (byte_flag == 0) begin
+                    // 1st cc - high byte
+                    latched_data <= data_in;
+                    byte_flag <= 1;
+                    wr_en <= 0;
+                end else begin
+                    // low byte and 12 bit output
+                    data_out <= {latched_data[7:4], latched_data[2:0], data_in[7], data_in[4:1]};
+                    byte_flag <= 0;
+                    if (cam_x[0] == 1'b0 && cam_y[0] == 1'b0 && out_addr < 76800) begin
+                        wr_en <= 1;
+                        out_addr <= out_addr + 1;
+                    end else begin
+                        wr_en <= 0;
+                    end
 
-            // output adrr + wr flag
-            out_addr <= next_addr;
-            wr_en <= byte_state[1];
-
-            // output the 12 bit rgb444 color
-            data_out <= {rgb565[15:12], rgb565[10:7], rgb565[4:1]};
-
-            // FSM; byte_state[1] goes high evey 2 cc when HREF is high
-            byte_state <= {byte_state[0], (href && !byte_state[0])};
-
-            if(byte_state[1]) begin
-                next_addr <= next_addr + 1;
+                    cam_x <= cam_x + 1;
+                end
+            end else begin
+                wr_en <= 0;
+                byte_flag <= 0;
             end
         end
     end

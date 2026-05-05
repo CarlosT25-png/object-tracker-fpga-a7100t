@@ -1,10 +1,9 @@
 `timescale 1ns / 1ps
 
-
 module camera(
     input clk_100mhz,
 
-    // camera setuo
+    // camera setup
     output cam_xclk, // 24 mhz clock for the camera
     output cam_rst, // high low
     output cam_pwdn, // 0 -> camera on; 1 -> camera off
@@ -16,17 +15,29 @@ module camera(
     input cam_href,
     input cam_dclk,
     input [7:0] cam_data,
+    input scale_sw,
+    input color_sw,
 
-    // spi output video
-    output spi_cs,
-    output spi_sclk,
-    output spi_mosi
+    // vga output
+    output [3:0] vga_red,
+    output [3:0] vga_green,
+    output [3:0] vga_blue,
+    output vga_hsync,
+    output vga_vsync,
+
+    //debug
+    output init_led,
+    output vsync_led,
+    output href_led,
+    output pclk_led
     );
 
+    wire clk_25mhz;
 
     clk_wiz_0 clk_0(
         .clk_in1(clk_100mhz),
-        .clk_out1(cam_xclk)
+        .clk_out1(cam_xclk),
+        .clk_out2(clk_25mhz)
     );
 
     // camera init + rom
@@ -42,58 +53,81 @@ module camera(
 
     sccb_master cam_sccb_0 (
         .clk_100mhz(clk_100mhz),
-        .rst(1'b0),                     // Tie to 0 if not using a reset button
+        .rst(1'b0),
         .rom_data(rom_data_wire),
         .rom_addr(rom_addr_wire),
-        .sccb_scl(cam_scl),             // Goes to PMOD JA1
-        .sccb_sda(cam_sda),             // Goes to PMOD JA2
+        .sccb_scl(cam_scl),
+        .sccb_sda(cam_sda),
         .camera_init_done(init_done)
     );
 
     // pixel capture
     wire [11:0] pixel_data;
     wire pixel_valid;
-    wire [18:0] pixel_addr;
+    wire [16:0] pixel_addr;
 
     camera_pixel_capture cam_capture_0 (
-        .pclk(cam_dclk),          // Driven by the camera's incoming clock
-        .rst(~init_done),         // Hold in reset until SCCB init is completely done
+        .pclk(cam_dclk),
+        .rst(~init_done),
         .vsync(cam_vsync),
         .href(cam_href),
         .data_in(cam_data),
-        .data_out(pixel_data),    // The combined 12-bit RGB444 pixel
-        .wr_en(pixel_valid),      // Goes HIGH when the pixel is fully assembled
-        .out_addr(pixel_addr)     // The target memory address
+        .data_out(pixel_data),    // 12 bits
+        .wr_en(pixel_valid),
+        .out_addr(pixel_addr)
     );
 
+    assign init_led = init_done;
+    assign vsync_led = cam_vsync;
+    assign href_led  = cam_href;
+    assign pclk_led  = cam_dclk;
+
     // frame buffer - BRAM IP
+    wire video_on;
+    wire [16:0] vga_read_addr;
+    wire [11:0] vga_read_data;    // 12 bits
 
-    wire [15:0] spi_read_data;
-    wire [18:0] spi_read_addr;
-
-    frame_buffer bram_spi_0 (
-        // port A, write to BRAM from camera
+    frame_buffer bram_vga_0 (
         .clka(cam_dclk),
         .wea(pixel_valid),
         .addra(pixel_addr),
-        .dina({4'b0000, pixel_data}), // pad 12 bit RGB44 to 16 bits
+        .dina(pixel_data),        // 12 bits
 
-        // port b, read from SPI master
-        .clkb(clk_100mhz),
-        .addrb(spi_read_addr),
-        .doutb(spi_read_data)
+        .clkb(clk_25mhz),
+        .enb(1'b1),
+        .addrb(vga_read_addr),
+        .doutb(vga_read_data)     // 12 bits
     );
 
-    spi_frame_tx spi_tx (
-        .clk_100mhz(clk_100mhz),
+    wire cam_window;
+
+    vga_controller vga_ctrl_0 (
+        .clk_25mhz(clk_25mhz),
         .rst(1'b0),
-        .vsync(cam_vsync),
-        .bram_addr(spi_read_addr),
-        .bram_data(spi_read_data),
-        .spi_cs(spi_cs),
-        .spi_sclk(spi_sclk),
-        .spi_mosi(spi_mosi)
+        .scale_sw(scale_sw),
+        .addr(vga_read_addr),
+        .vga_hsync(vga_hsync),
+        .vga_vsync(vga_vsync),
+        .video_on(video_on),
+        .cam_window(cam_window)
     );
+
+    // color filter
+    wire ball_pixel;
+
+    color_filter tracker_0 (
+        .clk(clk_25mhz),
+        .pixel_rgb(vga_read_data),
+        .ball_detected(ball_pixel)
+    );
+
+    wire [3:0] filter_r = ball_pixel ? 4'hF : 4'h0;
+    wire [3:0] filter_g = ball_pixel ? 4'hF : 4'h0;
+    wire [3:0] filter_b = ball_pixel ? 4'hF : 4'h0;
+
+    assign vga_red   = cam_window ? (color_sw ? filter_r : vga_read_data[11:8]) : 4'h0;
+    assign vga_green = cam_window ? (color_sw ? filter_g : vga_read_data[7:4])  : 4'h0;
+    assign vga_blue  = cam_window ? (color_sw ? filter_b : vga_read_data[3:0])  : (video_on ? 4'hF : 4'h0);
 
     assign cam_rst = 1'b1;
     assign cam_pwdn = 1'b0;

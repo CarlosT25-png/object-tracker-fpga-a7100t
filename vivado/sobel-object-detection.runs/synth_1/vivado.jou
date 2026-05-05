@@ -3,12 +3,12 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Mon May  4 14:42:52 2026
-# Process ID         : 28820
-# Current directory  : C:/Projects/VivadoProjects/sobel-object-detection/sobel-object-detection.runs/synth_1
+# Start of session at: Tue May  5 16:06:55 2026
+# Process ID         : 22900
+# Current directory  : C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1
 # Command line       : vivado.exe -log camera.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source camera.tcl
-# Log file           : C:/Projects/VivadoProjects/sobel-object-detection/sobel-object-detection.runs/synth_1/camera.vds
-# Journal file       : C:/Projects/VivadoProjects/sobel-object-detection/sobel-object-detection.runs/synth_1\vivado.jou
+# Log file           : C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/camera.vds
+# Journal file       : C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1\vivado.jou
 # Running On         : carlostorres-pc
 # Platform           : Windows Server 2016 or Windows 10
 # Operating System   : 26200
@@ -19,6 +19,6 @@
 # Host memory        : 16749 MB
 # Swap memory        : 16749 MB
 # Total Virtual      : 33499 MB
-# Available Virtual  : 12816 MB
+# Available Virtual  : 13273 MB
 #-----------------------------------------------------------
 source camera.tcl -notrace

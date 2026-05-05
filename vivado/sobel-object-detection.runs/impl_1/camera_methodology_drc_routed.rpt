@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Mon May  4 14:44:31 2026
+| Date         : Tue May  5 16:08:37 2026
 | Host         : carlostorres-pc running 64-bit major release  (build 9200)
 | Command      : report_methodology -file camera_methodology_drc_routed.rpt -pb camera_methodology_drc_routed.pb -rpx camera_methodology_drc_routed.rpx
 | Design       : camera
@@ -23,7 +23,7 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max checks: <unlimited>
-             Checks found: 20
+             Checks found: 18
 +-----------+------------------+----------------------------------------------------+--------+
 | Rule      | Severity         | Description                                        | Checks |
 +-----------+------------------+----------------------------------------------------+--------+
@@ -32,7 +32,7 @@ Table of Contents
 | HPDR-1    | Warning          | Port pin direction inconsistency                   | 1      |
 | SYNTH-6   | Warning          | Timing of a RAM block might be sub-optimal         | 1      |
 | TIMING-9  | Warning          | Unknown CDC Logic                                  | 1      |
-| TIMING-18 | Warning          | Missing input or output delay                      | 15     |
+| TIMING-18 | Warning          | Missing input or output delay                      | 13     |
 +-----------+------------------+----------------------------------------------------+--------+
 
 2. REPORT DETAILS
@@ -109,7 +109,7 @@ Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An input delay is missing on cam_vsync relative to the rising and/or falling clock edge(s) of cam_pixel_clock, sys_clk_pin.
+An input delay is missing on cam_vsync relative to the rising and/or falling clock edge(s) of cam_pixel_clock.
 Related violations: <none>
 
 TIMING-18#11 Warning
@@ -124,17 +124,7 @@ Related violations: <none>
 
 TIMING-18#13 Warning
 Missing input or output delay  
-An output delay is missing on spi_cs relative to the rising and/or falling clock edge(s) of sys_clk_pin.
-Related violations: <none>
-
-TIMING-18#14 Warning
-Missing input or output delay  
-An output delay is missing on spi_mosi relative to the rising and/or falling clock edge(s) of sys_clk_pin.
-Related violations: <none>
-
-TIMING-18#15 Warning
-Missing input or output delay  
-An output delay is missing on spi_sclk relative to the rising and/or falling clock edge(s) of sys_clk_pin.
+An output delay is missing on init_led relative to the rising and/or falling clock edge(s) of sys_clk_pin.
 Related violations: <none>
 
 
