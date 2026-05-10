@@ -58,7 +58,13 @@ if {$::dispatch::connected} {
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
 set_param general.usePosixSpawnForFork 1
+set_param synth.incremental.totalBlackboxInstancesCount 1
+set_param synth.incrementalSynthesisCache C:/Users/carto/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-21724-carlostorres-pc/incrSyn
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -78,18 +84,20 @@ OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_init_rom.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_pixel_capture.v
+  C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/centroid_calculator.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/color_filter.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/sccb_master.v
+  C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_pwm.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/vga_controller.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera.v
 }
+read_ip -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/ip/frame_buffer/frame_buffer.xci
+set_property used_in_implementation false [get_files -all c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/frame_buffer/frame_buffer_ooc.xdc]
+
 read_ip -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 set_property used_in_implementation false [get_files -all c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
-
-read_ip -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/ip/frame_buffer/frame_buffer.xci
-set_property used_in_implementation false [get_files -all c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/frame_buffer/frame_buffer_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -103,6 +111,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc
 set_property used_in_implementation false [get_files C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/utils_1/imports/synth_1/camera.dcp

@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
--- Date        : Tue May  5 13:12:29 2026
+-- Date        : Tue May  5 13:12:28 2026
 -- Host        : carlostorres-pc running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/frame_buffer/frame_buffer_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top frame_buffer -prefix
+--               frame_buffer_ frame_buffer_stub.vhdl
 -- Design      : frame_buffer
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

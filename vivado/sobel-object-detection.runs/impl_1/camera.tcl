@@ -97,6 +97,9 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
+set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -106,6 +109,9 @@ set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 2
   set_param general.usePosixSpawnForFork 1
+  set_param synth.incremental.totalBlackboxInstancesCount 1
+  set_param synth.incrementalSynthesisCache C:/Users/carto/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-21724-carlostorres-pc/incrSyn
+  set_param checkpoint.writeSynthRtdsInDcp 1
   set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 4  }
 OPTRACE "create in-memory project" START { }
@@ -122,8 +128,8 @@ OPTRACE "set parameters" START { }
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/camera.dcp
-  read_ip -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   read_ip -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/ip/frame_buffer/frame_buffer.xci
+  read_ip -quiet C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
 OPTRACE "read constraints: implementation" START { }
   read_xdc C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc
 OPTRACE "read constraints: implementation" END { }

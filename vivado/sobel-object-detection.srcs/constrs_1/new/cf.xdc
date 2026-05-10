@@ -36,6 +36,7 @@ set_property -dict { PACKAGE_PIN H17   IOSTANDARD LVCMOS33 } [get_ports { init_l
 set_property -dict { PACKAGE_PIN K15   IOSTANDARD LVCMOS33 } [get_ports { vsync_led }]; # LED 1
 set_property -dict { PACKAGE_PIN J13   IOSTANDARD LVCMOS33 } [get_ports { href_led }];  # LED 2
 set_property -dict { PACKAGE_PIN N14   IOSTANDARD LVCMOS33 } [get_ports { pclk_led }];  # LED 3
+set_property -dict { PACKAGE_PIN R18   IOSTANDARD LVCMOS33 } [get_ports { ball_valid_led }];  # LED 4
 
 ##Pmod Header JA
 
@@ -65,6 +66,12 @@ set_property -dict { PACKAGE_PIN F13   IOSTANDARD LVCMOS33 } [get_ports { cam_da
 set_property -dict { PACKAGE_PIN G13   IOSTANDARD LVCMOS33 } [get_ports { cam_data[6] }]; # JB9
 set_property -dict { PACKAGE_PIN H16   IOSTANDARD LVCMOS33 } [get_ports { cam_data[7] }]; # JB10
 
+
+# PMOD JC (Top Row)
+set_property -dict { PACKAGE_PIN K1    IOSTANDARD LVCMOS33 } [get_ports { servo_pan }];  # JC Pin 1
+set_property -dict { PACKAGE_PIN F6    IOSTANDARD LVCMOS33 } [get_ports { servo_tilt }]; # JC Pin 2
+set_property -dict { PACKAGE_PIN J2    IOSTANDARD LVCMOS33 } [get_ports { laser_en }];   # JC Pin 3
+# set_property -dict { PACKAGE_PIN G6    IOSTANDARD LVCMOS33 } [get_ports { ground_ref }]; # JC Pin 4 (Optional GND)
 
 #Pmod Header JXADC
 

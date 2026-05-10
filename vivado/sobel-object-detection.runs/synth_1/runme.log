@@ -8,7 +8,7 @@
   **** SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
   **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
   **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-  **** Start of session at: Tue May  5 16:06:55 2026
+  **** Start of session at: Sun May 10 16:04:50 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -25,117 +25,142 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 11632
+INFO: [Synth 8-7075] Helper process launched with PID 9116
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1203.754 ; gain = 493.645
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1206.289 ; gain = 495.223
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'camera' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera.v:3]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-22900-carlostorres-pc/realtime/clk_wiz_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-22900-carlostorres-pc/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-8152-carlostorres-pc/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-8152-carlostorres-pc/realtime/clk_wiz_0_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'camera_init_rom' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_init_rom.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'camera_init_rom' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_init_rom.v:3]
 INFO: [Synth 8-6157] synthesizing module 'sccb_master' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/sccb_master.v:4]
 INFO: [Synth 8-6155] done synthesizing module 'sccb_master' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/sccb_master.v:4]
 INFO: [Synth 8-6157] synthesizing module 'camera_pixel_capture' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_pixel_capture.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'camera_pixel_capture' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_pixel_capture.v:3]
-INFO: [Synth 8-6157] synthesizing module 'frame_buffer' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-22900-carlostorres-pc/realtime/frame_buffer_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'frame_buffer' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-22900-carlostorres-pc/realtime/frame_buffer_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'frame_buffer' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-8152-carlostorres-pc/realtime/frame_buffer_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'frame_buffer' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/.Xil/Vivado-8152-carlostorres-pc/realtime/frame_buffer_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'vga_controller' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/vga_controller.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'vga_controller' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/vga_controller.v:3]
-INFO: [Synth 8-6157] synthesizing module 'color_filter' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/color_filter.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'color_filter' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/color_filter.v:3]
+INFO: [Synth 8-6157] synthesizing module 'color_filter' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/color_filter.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'color_filter' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/color_filter.v:2]
+INFO: [Synth 8-6157] synthesizing module 'centroid_calculator' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/centroid_calculator.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'centroid_calculator' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/centroid_calculator.v:3]
+INFO: [Synth 8-6157] synthesizing module 'servo_pwm' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_pwm.v:3]
+	Parameter CENTER_PWM bound to: 150000 - type: integer 
+	Parameter SWEEP_RANGE bound to: 25000 - type: integer 
+	Parameter INVERT bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'servo_pwm' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_pwm.v:3]
+INFO: [Synth 8-6157] synthesizing module 'servo_pwm__parameterized0' [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_pwm.v:3]
+	Parameter CENTER_PWM bound to: 150000 - type: integer 
+	Parameter SWEEP_RANGE bound to: 25000 - type: integer 
+	Parameter INVERT bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'servo_pwm__parameterized0' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_pwm.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'camera' (0#1) [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera.v:3]
+WARNING: [Synth 8-3848] Net laser_en in module/entity camera does not have driver. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera.v:31]
 WARNING: [Synth 8-3917] design camera has port cam_rst driven by constant 1
 WARNING: [Synth 8-3917] design camera has port cam_pwdn driven by constant 0
+WARNING: [Synth 8-7129] Port laser_en in module camera is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1316.969 ; gain = 606.859
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1320.039 ; gain = 608.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1316.969 ; gain = 606.859
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1320.039 ; gain = 608.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1316.969 ; gain = 606.859
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1320.039 ; gain = 608.973
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1316.969 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1320.039 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_0'
-Finished Parsing XDC File [c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_0'
 Parsing XDC File [c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/frame_buffer/frame_buffer/frame_buffer_in_context.xdc] for cell 'bram_vga_0'
 Finished Parsing XDC File [c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/frame_buffer/frame_buffer/frame_buffer_in_context.xdc] for cell 'bram_vga_0'
+Parsing XDC File [c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_0'
+Finished Parsing XDC File [c:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_0'
 Parsing XDC File [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc]
-WARNING: [Vivado 12-584] No ports matched 'vauxn3'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:71]
-WARNING: [Vivado 12-584] No ports matched 'vauxp3'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:72]
-WARNING: [Vivado 12-584] No ports matched 'vauxn10'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:73]
-WARNING: [Vivado 12-584] No ports matched 'vauxp10'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:74]
-WARNING: [Vivado 12-584] No ports matched 'vauxn2'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:75]
-WARNING: [Vivado 12-584] No ports matched 'vauxp2'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:76]
-WARNING: [Vivado 12-584] No ports matched 'vauxn11'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:77]
-WARNING: [Vivado 12-584] No ports matched 'vauxp11'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:78]
+WARNING: [Vivado 12-584] No ports matched 'vauxn3'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:78]
+WARNING: [Vivado 12-584] No ports matched 'vauxp3'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:79]
+WARNING: [Vivado 12-584] No ports matched 'vauxn10'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:80]
+WARNING: [Vivado 12-584] No ports matched 'vauxp10'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:81]
+WARNING: [Vivado 12-584] No ports matched 'vauxn2'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:82]
+WARNING: [Vivado 12-584] No ports matched 'vauxp2'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:83]
+WARNING: [Vivado 12-584] No ports matched 'vauxn11'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:84]
+WARNING: [Vivado 12-584] No ports matched 'vauxp11'. [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc:85]
 Finished Parsing XDC File [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc]
 WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/camera_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/constrs_1/new/cf.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/camera_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/camera_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1397.160 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1401.160 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1397.160 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1401.160 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1397.160 ; gain = 687.051
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1401.160 ; gain = 690.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1397.160 ; gain = 687.051
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1401.160 ; gain = 690.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1397.160 ; gain = 687.051
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1401.160 ; gain = 690.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1397.160 ; gain = 687.051
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1401.160 ; gain = 690.094
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   3 Input   28 Bit       Adders := 2     
 	   2 Input   17 Bit       Adders := 1     
 	   2 Input   15 Bit       Adders := 1     
-	   2 Input   10 Bit       Adders := 5     
+	   2 Input   11 Bit       Adders := 2     
+	   2 Input   10 Bit       Adders := 8     
+	   3 Input   10 Bit       Adders := 1     
 	   2 Input    8 Bit       Adders := 2     
+	   3 Input    5 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 1     
 	               17 Bit    Registers := 2     
 	               16 Bit    Registers := 1     
 	               15 Bit    Registers := 1     
 	               12 Bit    Registers := 1     
-	               10 Bit    Registers := 4     
+	               10 Bit    Registers := 6     
+	                9 Bit    Registers := 1     
 	                8 Bit    Registers := 2     
-	                1 Bit    Registers := 8     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 12    
 +---ROMs : 
 	                    ROMs := 1     
 +---Muxes : 
 	   2 Input   32 Bit        Muxes := 1     
 	   2 Input   17 Bit        Muxes := 3     
 	   2 Input   15 Bit        Muxes := 1     
-	   2 Input   10 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 6     
-	   2 Input    1 Bit        Muxes := 13    
+	   2 Input   10 Bit        Muxes := 4     
+	   2 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 10    
+	   2 Input    1 Bit        Muxes := 12    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -152,17 +177,23 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-6040] Register cam_sccb_0/rom_addr_reg_rep driving address of a ROM cannot be packed in BRAM/URAM because of presence of initial value.
-DSP Report: Generating DSP vga_ctrl_0/addr0, operation Mode is: (C:0x13f)+((D:0xf0)+A)*(B:0x140).
-DSP Report: operator vga_ctrl_0/addr0 is absorbed into DSP vga_ctrl_0/addr0.
-DSP Report: operator vga_ctrl_0/addr1 is absorbed into DSP vga_ctrl_0/addr0.
-DSP Report: operator vga_ctrl_0/addr2 is absorbed into DSP vga_ctrl_0/addr0.
+DSP Report: Generating DSP addr0, operation Mode is: (C:0x13f)+((D:0xf0)+A)*(B:0x140).
+DSP Report: operator addr0 is absorbed into DSP addr0.
+DSP Report: operator addr1 is absorbed into DSP addr0.
+DSP Report: operator addr2 is absorbed into DSP addr0.
+DSP Report: Generating DSP duty_cycle1, operation Mode is: (A:0xc350)*B.
+DSP Report: operator duty_cycle1 is absorbed into DSP duty_cycle1.
+DSP Report: Generating DSP duty_cycle1, operation Mode is: (A:0xc350)*B.
+DSP Report: operator duty_cycle1 is absorbed into DSP duty_cycle1.
 WARNING: [Synth 8-3917] design camera has port cam_rst driven by constant 1
 WARNING: [Synth 8-3917] design camera has port cam_pwdn driven by constant 0
+WARNING: [Synth 8-7129] Port laser_en in module camera is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1506.188 ; gain = 796.078
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:27 . Memory (MB): peak = 1510.938 ; gain = 799.871
 ---------------------------------------------------------------------------------
- Sort Area is  vga_ctrl_0/addr0_0 : 0 0 : 254 254 : Used 1 time 0
+ Sort Area is  duty_cycle1_2 : 0 0 : 341 341 : Used 1 time 0
+ Sort Area is  duty_cycle1_4 : 0 0 : 341 341 : Used 1 time 0
+ Sort Area is  addr0_0 : 0 0 : 254 254 : Used 1 time 0
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
@@ -180,6 +211,8 @@ DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding R
 |Module Name    | DSP Mapping                      | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +---------------+----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |vga_controller | (C:0x13f)+((D:0xf0)+A)*(B:0x140) | 17     | 9      | 9      | 8      | 17     | 0    | 0    | 0    | 0    | 0     | 0    | 0    | 
+|servo_pwm      | (A:0xc350)*B                     | 10     | 16     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|servo_pwm      | (A:0xc350)*B                     | 10     | 16     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 +---------------+----------------------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
@@ -190,20 +223,20 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 1648.840 ; gain = 938.730
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1660.734 ; gain = 949.668
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 1671.004 ; gain = 960.895
+Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 1703.180 ; gain = 992.113
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance cam_rom_0/rom_data_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:30 . Memory (MB): peak = 1681.723 ; gain = 971.613
+Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1703.207 ; gain = 992.141
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -221,37 +254,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1874.562 ; gain = 1164.453
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1893.793 ; gain = 1182.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1874.562 ; gain = 1164.453
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 1893.793 ; gain = 1182.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1874.562 ; gain = 1164.453
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1893.793 ; gain = 1182.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1874.562 ; gain = 1164.453
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1893.793 ; gain = 1182.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1875.551 ; gain = 1165.441
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1895.801 ; gain = 1184.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1875.551 ; gain = 1165.441
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1895.801 ; gain = 1184.734
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -261,6 +294,8 @@ DSP Final Report (the ' indicates corresponding REG is set)
 +---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |Module Name    | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|servo_pwm      | A*B         | 10     | 16     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|servo_pwm      | A*B         | 10     | 16     | -      | -      | 26     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 |vga_controller | C+D+A*B     | 17     | 9      | 9      | 8      | 17     | 0    | 0    | 0    | 0    | 0     | 0    | 0    | 
 +---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
@@ -280,44 +315,44 @@ Report Cell Usage:
 |1     |clk_wiz      |     1|
 |2     |frame_buffer |     1|
 |3     |BUFG         |     1|
-|4     |CARRY4       |    26|
-|5     |DSP48E1      |     1|
-|6     |LUT1         |    26|
-|7     |LUT2         |    28|
-|8     |LUT3         |    29|
-|9     |LUT4         |    42|
-|10    |LUT5         |    34|
-|11    |LUT6         |    40|
-|12    |RAMB18E1     |     1|
-|13    |FDRE         |   122|
-|14    |FDSE         |     7|
-|15    |IBUF         |    13|
-|16    |OBUF         |    22|
-|17    |OBUFT        |     1|
+|4     |CARRY4       |   551|
+|5     |DSP48E1      |     3|
+|7     |LUT1         |   146|
+|8     |LUT2         |   400|
+|9     |LUT3         |  1290|
+|10    |LUT4         |    72|
+|11    |LUT5         |    85|
+|12    |LUT6         |   111|
+|13    |RAMB18E1     |     1|
+|14    |FDRE         |   293|
+|15    |FDSE         |     7|
+|16    |IBUF         |    13|
+|17    |OBUF         |    25|
+|18    |OBUFT        |     2|
 +------+-------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1875.551 ; gain = 1165.441
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1895.801 ; gain = 1184.734
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 1875.551 ; gain = 1085.250
-Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1875.551 ; gain = 1165.441
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:35 . Memory (MB): peak = 1895.801 ; gain = 1103.613
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:00:37 . Memory (MB): peak = 1895.801 ; gain = 1184.734
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1884.777 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 28 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1904.984 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 555 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1888.414 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1908.594 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 20349f38
+Synth Design complete | Checksum: f929c551
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 15 Warnings, 0 Critical Warnings and 0 Errors encountered.
+45 Infos, 17 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:37 . Memory (MB): peak = 1888.414 ; gain = 1382.984
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1888.414 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:41 . Memory (MB): peak = 1908.594 ; gain = 1404.262
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1908.594 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.runs/synth_1/camera.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file camera_utilization_synth.rpt -pb camera_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue May  5 16:07:37 2026...
+INFO: [Common 17-206] Exiting Vivado at Sun May 10 16:05:37 2026...

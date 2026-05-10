@@ -8,7 +8,11 @@ module vga_controller(
     output vga_hsync,
     output vga_vsync,
     output video_on,
-    output cam_window
+    output cam_window,
+
+    // centroid
+    output [9:0] h_cnt_out,
+    output [9:0] v_cnt_out 
 );
 
     // 640x480 timing parameters
@@ -53,6 +57,10 @@ module vga_controller(
 
     // if sw1 is on it will set to full screen
     assign cam_window = scale_sw ? video_on : small_window;
+
+    // centroid
+    assign h_cnt_out = h_cnt;
+    assign v_cnt_out = v_cnt;
 
         always @(*) begin
         if (scale_sw) begin
