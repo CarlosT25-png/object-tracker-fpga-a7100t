@@ -86,7 +86,9 @@ read_verilog -library xil_defaultlib {
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera_pixel_capture.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/centroid_calculator.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/color_filter.v
+  C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/roi_tracker.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/sccb_master.v
+  C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_deadband.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/servo_pwm.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/vga_controller.v
   C:/Projects/VivadoProjects/sobel-object-detection/vivado/sobel-object-detection.srcs/sources_1/new/camera.v

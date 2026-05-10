@@ -88,6 +88,27 @@ module camera(
     wire [16:0] vga_read_addr;
     wire [11:0] vga_read_data;
 
+    // ==========================================
+    // DIGITAL MANUAL WHITE BALANCE
+    // ==========================================
+    // Convert to Signed 6-bit so we can do safe math without wrapping around
+    wire signed [5:0] raw_r = $signed({2'b00, vga_read_data[11:8]});
+    wire signed [5:0] raw_g = $signed({2'b00, vga_read_data[7:4]});
+    wire signed [5:0] raw_b = $signed({2'b00, vga_read_data[3:0]});
+
+    // Apply White Balance Gain here! 
+    // (e.g., Subtract 2 from Red, Add 4 to Blue to fix a "Yellow" room)
+    wire signed [5:0] math_r = raw_r - 6'd2; 
+    wire signed [5:0] math_b = raw_b + 6'd4;
+
+    // Clamp values to prevent them from dropping below 0 or going above 15
+    wire [3:0] wb_r = (math_r < 0) ? 4'h0 : (math_r > 15 ? 4'hF : math_r[3:0]);
+    wire [3:0] wb_g = vga_read_data[7:4]; // Leave Green as the baseline
+    wire [3:0] wb_b = (math_b < 0) ? 4'h0 : (math_b > 15 ? 4'hF : math_b[3:0]);
+
+    // The new, color-corrected pixel!
+    wire [11:0] balanced_rgb = {wb_r, wb_g, wb_b};
+
     frame_buffer bram_vga_0 (
         .clka(cam_dclk),
         .wea(pixel_valid),
@@ -122,20 +143,33 @@ module camera(
 
     color_filter tracker_0 (
         .clk(clk_25mhz),
-        .pixel_rgb(vga_read_data),
+        .pixel_rgb(balanced_rgb),
         .ball_detected(ball_pixel)
     );
 
-    // ball centroid calculator
+    // region of interest
+    wire in_roi;
     wire [9:0] ball_x, ball_y;
     wire ball_valid;
+    roi_tracker roi_0 (
+        .ball_x(ball_x),
+        .ball_y(ball_y),
+        .vga_h_cnt(vga_h_cnt),
+        .vga_v_cnt(vga_v_cnt),
+        .ball_valid(ball_valid),
+        .in_roi(in_roi)
+    );
+
+
+    // ball centroid calculator
 
     centroid_calculator brain_0 (
         .clk_25mhz(clk_25mhz),
         .rst(1'b0),
         .h_cnt(vga_h_cnt),
         .v_cnt(vga_v_cnt),
-        .is_ball_pixel(ball_pixel && cam_window),
+        // Require: Color match + Inside Camera + Inside ROI box
+        .is_ball_pixel(ball_pixel && cam_window && in_roi),
         .vsync(vga_vsync),
         .x_center(ball_x),
         .y_center(ball_y),
@@ -152,12 +186,16 @@ module camera(
     wire [3:0] filter_b = ball_pixel ? 4'hF : 4'h0;
 
     // pan and tilt gimbal
-    // x axis
-    wire [9:0] pan_offset = 10'd100;  //  laser to the right
-    wire [9:0] tilt_offset = 10'd40;  // laser height
 
-    wire [9:0] target_x = (ball_x > pan_offset) ? (ball_x - pan_offset) : 10'd0;
-    wire [9:0] target_y = (ball_y > tilt_offset) ? (ball_y - tilt_offset) : 10'd0;
+    wire [9:0] target_x, target_y;
+    servo_deadband deadband_0 (
+        .clk(clk_25mhz),
+        .ball_valid(ball_valid),
+        .ball_x(ball_x),
+        .ball_y(ball_y),
+        .stable_pan(target_x),
+        .stable_tilt(target_y)
+    );
 
     // Pan Servo (X axis)
     servo_pwm #(
@@ -175,7 +213,7 @@ module camera(
     servo_pwm #(
         .CENTER_PWM(150000),
         .SWEEP_RANGE(25000),
-        .INVERT(0) 
+        .INVERT(0)
     ) tilt_ctrl (
         .clk_100mhz(clk_100mhz),
         .pos(target_y),
@@ -183,9 +221,9 @@ module camera(
         .pwm_out(servo_tilt)
     );
 
-    assign vga_red   = crosshair ? 4'hF : (cam_window ? (color_sw ? filter_r : vga_read_data[11:8]) : 4'h0);
-    assign vga_green = crosshair ? 4'h0 : (cam_window ? (color_sw ? filter_g : vga_read_data[7:4])  : 4'h0);
-    assign vga_blue  = crosshair ? 4'h0 : (cam_window ? (color_sw ? filter_b : vga_read_data[3:0])  : (video_on ? 4'hF : 4'h0));
+    assign vga_red   = crosshair ? 4'hF : (cam_window ? (color_sw ? filter_r : balanced_rgb[11:8]) : 4'h0);
+    assign vga_green = crosshair ? 4'h0 : (cam_window ? (color_sw ? filter_g : balanced_rgb[7:4])  : 4'h0);
+    assign vga_blue  = crosshair ? 4'h0 : (cam_window ? (color_sw ? filter_b : balanced_rgb[3:0])  : (video_on ? 4'hF : 4'h0));
 
     assign cam_rst = 1'b1;
     assign cam_pwdn = 1'b0;

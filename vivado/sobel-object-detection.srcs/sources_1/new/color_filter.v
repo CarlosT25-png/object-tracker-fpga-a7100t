@@ -5,46 +5,61 @@ module color_filter(
     output reg ball_detected
 );
 
+// extract the RGB
 wire [3:0] r = pixel_rgb[11:8];
 wire [3:0] g = pixel_rgb[7:4];
 wire [3:0] b = pixel_rgb[3:0];
 
-// Pad to 5 bits to prevent overflow/wrap-around bugs!
-wire [4:0] r5 = {1'b0, r};
-wire [4:0] g5 = {1'b0, g};
-wire [4:0] b5 = {1'b0, b};
 
-// Calculate the difference between Red and Green
-wire [4:0] rg_diff = (r5 > g5) ? (r5 - g5) : (g5 - r5);
+// calculate Y (Brightness). Formula: (R + 2G + B) / 4
+wire [5:0] sum_y = r + (g << 1) + b;
+wire [3:0] y = sum_y[5:2];
 
-// Define the rules:
-
-// RULE A: Red and Green must be balanced (Not skin/wood)
-wire not_skin = (rg_diff <= 5'd3); 
-
-// RULE B: Yellow means Red and Green are BOTH much higher than Blue.
-// (Using 5-bit math so 15 + 3 = 18, not 2!)
-wire is_yellow = (r5 > b5 + 5'd1) && (g5 > b5 + 5'd1);
-
-// RULE C: Reject the window! 
-// If the blue channel is high, it's a white light or glare.
-// A yellow ball reflects very little blue light.
-wire not_window = (b < 4'hA); // Blue must be less than 10.
-
-// RULE D: Ignore dark shadows
-wire bright_enough = (r > 4'h3) && (g > 4'h3);
-
-// The pixel is a candidate if it passes ALL rules
-wire raw_match = not_skin && is_yellow && not_window && bright_enough;
+// color difference from brightness using
+wire signed [5:0] cb = $signed({2'b00, b}) - $signed({2'b00, y}); // Chroma Blue
+wire signed [5:0] cr = $signed({2'b00, r}) - $signed({2'b00, y}); // Chroma Red
+wire signed [5:0] cg = $signed({2'b00, g}) - $signed({2'b00, y}); // Chroma Green
 
 
-// 4. Spatial Noise Filter (Pixel Debouncing)
+// =========================================================================
+// 2. TUNING INSTRUCTIONS
+// =========================================================================
+// STEP 1: GET THE WHOLE BALL BACK
+// If the ball mask is spotty/sparse, you need to LOOSEN the rules:
+// -> Change RULE B (cg) to >= -$signed(6'd1)  [Allows less green]
+// -> Change RULE A (cb) to <= $signed(6'd2)   [Allows more blue]
+// Keep loosening until the ball is a solid white circle. Don't worry about noise yet.
+//
+// STEP 2: KILL THE SKIN & DESK (The "Cr" Knob)
+// If your hand or the wood desk is glowing white on the mask, TIGHTEN RULE C.
+// -> Lower 'cr' from 1 down to 0:          (cr <= $signed(6'd0))
+// -> Or even lower it to -1 if needed:     (cr <= -$signed(6'd1))
+// (Why? Skin and wood reflect a lot of Red. Lowering Cr deletes skin!)
+//
+// STEP 3: KILL GLARE & WINDOWS (The "Cb" Knob)
+// If the window or white keyboard keys show up, TIGHTEN RULE A.
+// -> Lower 'cb' from 1 down to 0:          (cb <= $signed(6'd0))
+// -> Or even lower it to -1 if needed:     (cb <= -$signed(6'd1))
+// (Why? Yellow absorbs blue light. Windows reflect blue light.)
+// =========================================================================
+
+// tuning params
+wire low_blue = (cb <= -$signed(6'd1)); // best val -1 - fixed
+
+wire high_green = (cg >= $signed(6'd0)); // best val 0
+
+wire low_red = (cr <= $signed(6'd1)); // fixed - best val 1
+
+wire bright_enough = (y >= 4'd3);
+
+// ----------------------------------------
+
+wire raw_match = low_blue && high_green && low_red && bright_enough;
+
 reg [2:0] history_shift;
 
 always @(posedge clk) begin
     history_shift <= {history_shift[1:0], raw_match};
-    
-    // Require 3 consecutive matching pixels to delete static
     if (history_shift == 3'b111) begin
         ball_detected <= 1'b1;
     end else begin

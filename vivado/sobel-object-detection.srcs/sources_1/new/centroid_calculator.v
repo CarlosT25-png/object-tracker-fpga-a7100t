@@ -27,8 +27,8 @@ module centroid_calculator(
             sum_x <= 0; sum_y <= 0; count <= 0;
             x_center <= 0; y_center <= 0;
         end else if (vsync_edge) begin
-            // If we found enough pixels to trust it's the ball (threshold of 50)
-        if (count > 200) begin  // Lowered from 1000
+            // If we found enough pixels to trust it's the ball
+        if (count > 250) begin
             x_center <= sum_x / count;
             y_center <= sum_y / count;
             target_valid <= 1'b1;

@@ -146,7 +146,7 @@ module camera_init_rom (
       8'h86: rom_data <= 16'h9780;
       8'h87: rom_data <= 16'h9700;
       8'h88: rom_data <= 16'h9700;
-      8'h89: rom_data <= 16'hC3ED;
+      8'h89: rom_data <= 16'hC3E1;
       8'h8A: rom_data <= 16'hA400;
       8'h8B: rom_data <= 16'hA800;
       8'h8C: rom_data <= 16'hC511;
@@ -178,7 +178,7 @@ module camera_init_rom (
       8'hA6: rom_data <= 16'h5B78;
       8'hA7: rom_data <= 16'h5C00;
       8'hA8: rom_data <= 16'hD382;
-      8'hA9: rom_data <= 16'hC3ED;
+      8'hA9: rom_data <= 16'hC3E1;
       8'hAA: rom_data <= 16'h7F00;
       8'hAB: rom_data <= 16'hDA08;
       8'hAC: rom_data <= 16'hE51F;
@@ -186,6 +186,7 @@ module camera_init_rom (
       8'hAE: rom_data <= 16'hE000;
       8'hAF: rom_data <= 16'hDD7F;
       8'hB0: rom_data <= 16'h0500;
+
 
       // custom markers: end of cases
       8'hB1: rom_data <= 16'hFFFF;

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Sun May 10 16:06:20 2026
+| Date         : Sun May 10 18:05:07 2026
 | Host         : carlostorres-pc running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file camera_control_sets_placed.rpt
 | Design       : camera
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    19 |
-|    Minimum number of control sets                        |    19 |
+| Total control sets                                       |    21 |
+|    Minimum number of control sets                        |    21 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    79 |
+| Unused register locations in slices containing registers |    89 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,12 +39,12 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    19 |
+| Total control sets |    21 |
 | >= 0 to < 4        |     1 |
 | >= 4 to < 6        |     2 |
 | >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     1 |
-| >= 10 to < 12      |     4 |
+| >= 10 to < 12      |     6 |
 | >= 12 to < 14      |     2 |
 | >= 14 to < 16      |     1 |
 | >= 16              |     7 |
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              30 |           19 |
+| No           | No                    | No                     |              30 |           18 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              53 |           17 |
-| Yes          | No                    | No                     |              74 |           24 |
+| No           | Yes                   | No                     |              53 |           19 |
+| Yes          | No                    | No                     |             104 |           61 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             148 |           42 |
+| Yes          | Yes                   | No                     |             148 |           55 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,24 +74,26 @@ Table of Contents
 |      Clock Signal     |             Enable Signal             |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
 +-----------------------+---------------------------------------+--------------------------------+------------------+----------------+--------------+
 |  clk_100mhz_IBUF_BUFG |                                       | cam_sccb_0/p_0_in__0           |                1 |              1 |         1.00 |
-|  pclk_led_OBUF_BUFG   |                                       |                                |                3 |              4 |         1.33 |
+|  pclk_led_OBUF_BUFG   |                                       |                                |                2 |              4 |         2.00 |
 |  clk_100mhz_IBUF_BUFG |                                       |                                |                5 |              5 |         1.00 |
-|  pclk_led_OBUF_BUFG   | cam_capture_0/latched_data[7]_i_1_n_0 |                                |                2 |              7 |         3.50 |
+|  pclk_led_OBUF_BUFG   | cam_capture_0/latched_data[7]_i_1_n_0 |                                |                5 |              7 |         1.40 |
 |  clk_100mhz_IBUF_BUFG | cam_sccb_0/rom_addr[7]_i_1_n_0        |                                |                2 |              8 |         4.00 |
 |  pclk_led_OBUF_BUFG   | cam_capture_0/cam_y0                  | cam_capture_0/cam_x[0]_i_1_n_0 |                2 |             10 |         5.00 |
-|  pclk_led_OBUF_BUFG   | cam_capture_0/CEC                     | cam_capture_0/cam_x[0]_i_1_n_0 |                2 |             10 |         5.00 |
-|  clk_0/inst/clk_out2  |                                       | vga_ctrl_0/v_cnt               |                4 |             10 |         2.50 |
-|  clk_0/inst/clk_out2  | vga_ctrl_0/v_cnt                      |                                |                6 |             10 |         1.67 |
-|  pclk_led_OBUF_BUFG   | cam_capture_0/data_out[11]_i_1_n_0    |                                |                4 |             12 |         3.00 |
+|  pclk_led_OBUF_BUFG   | cam_capture_0/CEC                     | cam_capture_0/cam_x[0]_i_1_n_0 |                3 |             10 |         3.33 |
+|  clk_0/inst/clk_out2  |                                       | vga_ctrl_0/v_cnt               |                6 |             10 |         1.67 |
+|  clk_0/inst/clk_out2  | vga_ctrl_0/v_cnt                      |                                |                4 |             10 |         2.50 |
+|  clk_0/inst/clk_out2  | deadband_0/stable_pan[9]_i_1_n_0      |                                |                6 |             10 |         1.67 |
+|  clk_0/inst/clk_out2  | deadband_0/E[0]                       |                                |                3 |             10 |         3.33 |
+|  pclk_led_OBUF_BUFG   | cam_capture_0/data_out[11]_i_1_n_0    |                                |                9 |             12 |         1.33 |
 |  clk_100mhz_IBUF_BUFG | cam_rom_0/rom_data_reg_0              | cam_rom_0/count_reg[2]         |                3 |             13 |         4.33 |
 |  clk_100mhz_IBUF_BUFG | cam_rom_0/camera_init_done_reg        | cam_sccb_0/count[14]_i_1_n_0   |                4 |             14 |         3.50 |
-|  pclk_led_OBUF_BUFG   | cam_capture_0/out_addr[16]_i_1_n_0    | cam_capture_0/cam_x[0]_i_1_n_0 |                6 |             17 |         2.83 |
-|  clk_100mhz_IBUF_BUFG | cam_rom_0/rom_data_reg_0              |                                |                4 |             17 |         4.25 |
-|  clk_0/inst/clk_out2  | brain_0/x_center[9]_i_1_n_0           |                                |                6 |             20 |         3.33 |
+|  clk_100mhz_IBUF_BUFG | cam_rom_0/rom_data_reg_0              |                                |                5 |             17 |         3.40 |
+|  pclk_led_OBUF_BUFG   | cam_capture_0/out_addr[16]_i_1_n_0    | cam_capture_0/cam_x[0]_i_1_n_0 |                4 |             17 |         4.25 |
 |  clk_100mhz_IBUF_BUFG |                                       | pan_ctrl/clear                 |                6 |             21 |         3.50 |
 |  clk_100mhz_IBUF_BUFG |                                       | tilt_ctrl/clear                |                6 |             21 |         3.50 |
 |  clk_0/inst/clk_out2  |                                       |                                |               11 |             21 |         1.91 |
-|  clk_0/inst/clk_out2  | vga_ctrl_0/is_ball_pixel0             | vga_ctrl_0/vsync_edge          |               25 |             84 |         3.36 |
+|  clk_0/inst/clk_out2  | brain_0/last_vsync_reg_0              |                                |               27 |             30 |         1.11 |
+|  clk_0/inst/clk_out2  | vga_ctrl_0/is_ball_pixel0             | vga_ctrl_0/vsync_edge          |               39 |             84 |         2.15 |
 +-----------------------+---------------------------------------+--------------------------------+------------------+----------------+--------------+
 
 
