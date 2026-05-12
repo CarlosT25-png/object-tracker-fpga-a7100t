@@ -21,9 +21,7 @@ wire signed [5:0] cr = $signed({2'b00, r}) - $signed({2'b00, y}); // Chroma Red
 wire signed [5:0] cg = $signed({2'b00, g}) - $signed({2'b00, y}); // Chroma Green
 
 
-// =========================================================================
-// 2. TUNING INSTRUCTIONS
-// =========================================================================
+// tuning instructions 
 // STEP 1: GET THE WHOLE BALL BACK
 // If the ball mask is spotty/sparse, you need to LOOSEN the rules:
 // -> Change RULE B (cg) to >= -$signed(6'd1)  [Allows less green]

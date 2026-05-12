@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date             : Sun May 10 18:06:08 2026
+| Date             : Mon May 11 14:57:48 2026
 | Host             : carlostorres-pc running 64-bit major release  (build 9200)
 | Command          : report_power -file camera_power_routed.rpt -pb camera_power_summary_routed.pb -rpx camera_power_routed.rpx
 | Design           : camera
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.226        |
+| Total On-Chip Power (W)  | 0.224        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.127        |
+| Dynamic (W)              | 0.125        |
 | Device Static (W)        | 0.099        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.0         |
@@ -53,19 +53,19 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.004 |        8 |       --- |             --- |
-| Slice Logic    |     0.003 |     3348 |       --- |             --- |
-|   LUT as Logic |     0.003 |     2100 |     63400 |            3.31 |
-|   CARRY4       |    <0.001 |      571 |     15850 |            3.60 |
-|   Register     |    <0.001 |      388 |    126800 |            0.31 |
+| Slice Logic    |     0.003 |     3363 |       --- |             --- |
+|   LUT as Logic |     0.002 |     2117 |     63400 |            3.34 |
+|   CARRY4       |    <0.001 |      589 |     15850 |            3.72 |
+|   Register     |    <0.001 |      403 |    126800 |            0.32 |
 |   F7/F8 Muxes  |    <0.001 |       18 |     63400 |            0.03 |
-|   Others       |     0.000 |       75 |       --- |             --- |
-| Signals        |     0.004 |     3025 |       --- |             --- |
+|   Others       |     0.000 |       84 |       --- |             --- |
+| Signals        |     0.004 |     3109 |       --- |             --- |
 | Block RAM      |     0.004 |       27 |       135 |           20.00 |
 | MMCM           |     0.101 |        1 |         6 |           16.67 |
 | DSPs           |    <0.001 |        3 |       240 |            1.25 |
-| I/O            |     0.010 |       41 |       210 |           19.52 |
+| I/O            |     0.009 |       41 |       210 |           19.52 |
 | Static Power   |     0.099 |          |           |                 |
-| Total          |     0.226 |          |           |                 |
+| Total          |     0.224 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,9 +75,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.031 |       0.016 |      0.016 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.075 |       0.056 |      0.018 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.007 |       0.003 |      0.004 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.031 |       0.015 |      0.016 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.074 |       0.056 |      0.018 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.006 |       0.002 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -149,17 +149,16 @@ Table of Contents
 +------------------------+-----------+
 | Name                   | Power (W) |
 +------------------------+-----------+
-| camera                 |     0.127 |
+| camera                 |     0.125 |
 |   brain_0              |     0.006 |
 |   bram_vga_0           |     0.003 |
 |     U0                 |     0.003 |
 |       inst_blk_mem_gen |     0.003 |
 |   cam_rom_0            |     0.001 |
-|   cam_sccb_0           |     0.001 |
 |   clk_0                |     0.101 |
 |     inst               |     0.101 |
 |   pan_ctrl             |     0.001 |
-|   tilt_ctrl            |     0.001 |
+|   tilt_ctrl            |     0.002 |
 +------------------------+-----------+
 
 

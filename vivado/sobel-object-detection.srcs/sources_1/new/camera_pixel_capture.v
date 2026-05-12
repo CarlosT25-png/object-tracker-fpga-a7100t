@@ -31,11 +31,11 @@ module camera_pixel_capture(
         cam_x <= 0;
         cam_y <= 0;
     end else begin
-        // Reset X on every line to prevent horizontal drift
+        // reset X on every line to prevent horizontal drift
         if (last_href == 1'b0 && href == 1'b1) begin
             cam_x <= 0;
         end
-        // Increment Y on end of line
+        // increment Y on end of line
         if (last_href == 1'b1 && href == 1'b0) begin
             cam_y <= cam_y + 1;
         end
@@ -47,12 +47,12 @@ module camera_pixel_capture(
                 wr_en <= 0;
             end else begin
                 byte_flag <= 0;
-                // Reconstruct RGB444
+                // reconstruct RGB444
                 data_out <= {latched_data[7:4], latched_data[2:0], data_in[7], data_in[4:1]};
 
                 if (cam_x[0] == 1'b0 && cam_y[0] == 1'b0) begin
                     wr_en <= 1;
-                    // Logic: (Y/2 * 320) + (X/2)
+                    // logic: (Y/2 * 320) + (X/2)
                     out_addr <= (cam_y[9:1] * 320) + cam_x[9:1];
                 end else begin
                     wr_en <= 0;

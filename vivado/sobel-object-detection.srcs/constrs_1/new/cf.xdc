@@ -68,8 +68,8 @@ set_property -dict { PACKAGE_PIN H16   IOSTANDARD LVCMOS33 } [get_ports { cam_da
 
 
 # PMOD JC (Top Row)
-set_property -dict { PACKAGE_PIN K1    IOSTANDARD LVCMOS33 } [get_ports { servo_pan }];  # JC Pin 1
-set_property -dict { PACKAGE_PIN F6    IOSTANDARD LVCMOS33 } [get_ports { servo_tilt }]; # JC Pin 2
+set_property -dict { PACKAGE_PIN K1    IOSTANDARD LVCMOS33 } [get_ports { servo_pan }];  # JC Pin 1 X axis
+set_property -dict { PACKAGE_PIN F6    IOSTANDARD LVCMOS33 } [get_ports { servo_tilt }]; # JC Pin 2 Y axis
 set_property -dict { PACKAGE_PIN J2    IOSTANDARD LVCMOS33 } [get_ports { laser_en }];   # JC Pin 3
 # set_property -dict { PACKAGE_PIN G6    IOSTANDARD LVCMOS33 } [get_ports { ground_ref }]; # JC Pin 4 (Optional GND)
 

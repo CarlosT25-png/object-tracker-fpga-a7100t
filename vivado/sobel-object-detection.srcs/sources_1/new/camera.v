@@ -88,22 +88,16 @@ module camera(
     wire [16:0] vga_read_addr;
     wire [11:0] vga_read_data;
 
-    // ==========================================
-    // DIGITAL MANUAL WHITE BALANCE
-    // ==========================================
-    // Convert to Signed 6-bit so we can do safe math without wrapping around
+    // digital white balance
     wire signed [5:0] raw_r = $signed({2'b00, vga_read_data[11:8]});
     wire signed [5:0] raw_g = $signed({2'b00, vga_read_data[7:4]});
     wire signed [5:0] raw_b = $signed({2'b00, vga_read_data[3:0]});
 
-    // Apply White Balance Gain here! 
-    // (e.g., Subtract 2 from Red, Add 4 to Blue to fix a "Yellow" room)
-    wire signed [5:0] math_r = raw_r - 6'd2; 
+    wire signed [5:0] math_r = raw_r - 6'd2;
     wire signed [5:0] math_b = raw_b + 6'd4;
 
-    // Clamp values to prevent them from dropping below 0 or going above 15
     wire [3:0] wb_r = (math_r < 0) ? 4'h0 : (math_r > 15 ? 4'hF : math_r[3:0]);
-    wire [3:0] wb_g = vga_read_data[7:4]; // Leave Green as the baseline
+    wire [3:0] wb_g = vga_read_data[7:4];
     wire [3:0] wb_b = (math_b < 0) ? 4'h0 : (math_b > 15 ? 4'hF : math_b[3:0]);
 
     // The new, color-corrected pixel!
@@ -152,8 +146,8 @@ module camera(
     wire [9:0] ball_x, ball_y;
     wire ball_valid;
     roi_tracker roi_0 (
-        .ball_x(ball_x),
-        .ball_y(ball_y),
+        .ball_x(10'd160), //10'd160
+        .ball_y(10'd120), //10'd120
         .vga_h_cnt(vga_h_cnt),
         .vga_v_cnt(vga_v_cnt),
         .ball_valid(ball_valid),
@@ -168,7 +162,6 @@ module camera(
         .rst(1'b0),
         .h_cnt(vga_h_cnt),
         .v_cnt(vga_v_cnt),
-        // Require: Color match + Inside Camera + Inside ROI box
         .is_ball_pixel(ball_pixel && cam_window && in_roi),
         .vsync(vga_vsync),
         .x_center(ball_x),
@@ -188,8 +181,8 @@ module camera(
     // pan and tilt gimbal
 
     wire [9:0] target_x, target_y;
-    servo_deadband deadband_0 (
-        .clk(clk_25mhz),
+    gimbal_tracker tracker_pid_0 (
+        .clk_25mhz(clk_25mhz),
         .ball_valid(ball_valid),
         .ball_x(ball_x),
         .ball_y(ball_y),
@@ -201,7 +194,7 @@ module camera(
     servo_pwm #(
         .CENTER_PWM(150000),
         .SWEEP_RANGE(25000),
-        .INVERT(1)
+        .INVERT(0)
     ) pan_ctrl (
         .clk_100mhz(clk_100mhz),
         .pos(target_x),
@@ -217,7 +210,7 @@ module camera(
     ) tilt_ctrl (
         .clk_100mhz(clk_100mhz),
         .pos(target_y),
-        .max_pos(10'd240),
+        .max_pos(10'd400),
         .pwm_out(servo_tilt)
     );
 

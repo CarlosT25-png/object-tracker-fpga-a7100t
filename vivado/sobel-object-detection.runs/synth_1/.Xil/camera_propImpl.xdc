@@ -48,9 +48,9 @@ set_property -dict { PACKAGE_PIN G13   IOSTANDARD LVCMOS33 } [get_ports { cam_da
 set_property src_info {type:XDC file:1 line:67 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN H16   IOSTANDARD LVCMOS33 } [get_ports { cam_data[7] }]; # JB10
 set_property src_info {type:XDC file:1 line:71 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN K1    IOSTANDARD LVCMOS33 } [get_ports { servo_pan }];  # JC Pin 1
+set_property -dict { PACKAGE_PIN K1    IOSTANDARD LVCMOS33 } [get_ports { servo_pan }];  # JC Pin 1 X axis
 set_property src_info {type:XDC file:1 line:72 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN F6    IOSTANDARD LVCMOS33 } [get_ports { servo_tilt }]; # JC Pin 2
+set_property -dict { PACKAGE_PIN F6    IOSTANDARD LVCMOS33 } [get_ports { servo_tilt }]; # JC Pin 2 Y axis
 set_property src_info {type:XDC file:1 line:73 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN J2    IOSTANDARD LVCMOS33 } [get_ports { laser_en }];   # JC Pin 3
 set_property src_info {type:XDC file:1 line:78 export:INPUT save:INPUT read:READ} [current_design]
