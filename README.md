@@ -105,3 +105,6 @@ Threshold comments in `color_filter.v` describe how to loosen/tighten rules for 
 ### Color Filter Output
 ![Color Filter Output](https://raw.githubusercontent.com/CarlosT25-png/object-tracker-fpga-a7100t/main/color-filter-output.png)
 
+
+### Live video
+![Live Video](https://github.com/CarlosT25-png/object-tracker-fpga-a7100t/blob/main/demo-project.gif)
