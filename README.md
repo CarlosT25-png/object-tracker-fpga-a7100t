@@ -1,6 +1,6 @@
-# FPGA Ball Tracker (Nexys A7)
+# FPGA Object Tracker
 
-Real-time color-based object tracking on the Digilent Nexys A7-100T. An OV2640 camera captures video, the design segments a colored ball in hardware, computes its centroid each frame, and drives pan/tilt servos to keep the target centered. Live preview is shown on the onboard VGA port.
+Real time color based object tracking on the Digilent Nexys A7-100T. An OV2640 camera captures video, the design segments a colored ball in hardware, computes its centroid each frame, and drives pan/tilt servos to keep the target centered. Live preview is shown on the onboard VGA port.
 
 
 ## Features
