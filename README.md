@@ -96,3 +96,12 @@ Generated IP: `clk_wiz_0`, `frame_buffer` (Block Memory Generator).
 ### Tuning detection
 
 Threshold comments in `color_filter.v` describe how to loosen/tighten rules for ball fill, skin rejection (`cr`), and glare (`cb`). Adjust the `low_blue`, `high_green`, `low_red`, and `bright_enough` wires until the mask is solid on the target and quiet elsewhere.
+
+## Project Demo
+
+### Raw video from OV2640
+![RAW Live Video](https://github.com/CarlosT25-png/object-tracker-fpga-a7100t/blob/main/raw-live-feed.png)
+
+### Color Filter Output
+![Color Filter Output](https://raw.githubusercontent.com/CarlosT25-png/object-tracker-fpga-a7100t/main/color-filter-output.png)
+
